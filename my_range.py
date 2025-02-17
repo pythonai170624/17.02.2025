@@ -1,6 +1,5 @@
 import random
 
-
 class MyRange:
     def __init__(self, start, stop, jump):
         self.start = start
@@ -8,20 +7,33 @@ class MyRange:
         self.stop = stop
         self.jump = jump
 
+    def first(self):
+        self.current = self.start
+
     # black-box
     # signature
     def __iter__(self):
         return self
 
     def __next__(self):
-        x = int(input('number'))
-        if x % 2 == 0:
+        if self.current > self.stop:
             raise StopIteration
         value = self.current
         self.current += self.jump
-        return random.randint(1, 100)
+        return value
 
 it = MyRange(1, 10, 1)
 for x in it:
     print(x)
+
+# build iterator
+# return factorial
+# mf = MyFactorial(1, 5)
+# for x in mf:
+#    print(x)
+# 1!
+# 2!
+# 3!
+# 4!
+# 5!
 
